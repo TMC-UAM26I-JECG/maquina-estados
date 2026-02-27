@@ -128,8 +128,11 @@ class Animacion {
 
     var x0 = randInt(0, Math.max(0, this.canvas.width - spriteW));
     var y0 = randInt(0, Math.max(0, this.canvas.height - spriteH));
+    var x1 = randInt(10, Math.max(2, this.canvas.width - spriteW));
+    var y1 = randInt(10, Math.max(2, this.canvas.height - spriteH));
 
     this.nave = new NaveEspacial(x0, y0, this.imagenes.nave);
+    this.nave2 = new NaveEspacial(x1, y1, this.imagenes.nave);
   }
 
   /**
@@ -137,9 +140,11 @@ class Animacion {
    */
   actualizarYdibujar() {
     this.nave.mover(this.canvas.width);
+    this.nave2.mover(this.canvas.width);
 
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.nave.dibujar(this.ctx);
+    this.nave2.dibujar(this.ctx);
   }  /**
    * Máquina de Estados Finita (FSM)
    * --------------------------------
