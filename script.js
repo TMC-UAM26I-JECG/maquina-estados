@@ -10,12 +10,6 @@
  *   PRECARGA  -> esperar a que las imágenes estén listas
  *   INICIO    -> ciclo principal (actualizar + dibujar)
  *
- * Restricciones solicitadas:
- * - Código sencillo.
- * - Sin funciones lambda (=>).
- * - Sin Promesas.
- * - Sin manejo de eventos de teclado.
- * - Nave inicia en posición aleatoria.
  */
 
 // ===========================
@@ -158,10 +152,6 @@ class Animacion {
    *    cambiando el valor de this.estado.
    * 4) Se programa el siguiente "tick" del autómata con setTimeout.
    *
-   * Observación importante para clase:
-   * - this.estado  ≙  estado actual del autómata (q ∈ Q)
-   * - Las condiciones (imagenesListas) ≙ símbolos/condiciones de transición
-   * - this.estado = ...  ≙  función de transición δ
    */
   ejecutarMaquinaDeEstados() {
 
@@ -176,7 +166,7 @@ class Animacion {
       this.cargarImagenes();
 
       // Transición explícita del autómata:
-      // δ(CREACION) -> PRECARGA
+      // f(CREACION) -> PRECARGA
       this.estado = PRECARGA;
 
       // Próximo paso del autómata
@@ -197,7 +187,7 @@ class Animacion {
         // Acción antes de cambiar de estado
         this.inicializarEscena();
 
-        // δ(PRECARGA, imagenes_listas) -> INICIO
+        // f(PRECARGA, imagenes_listas) -> INICIO
         this.estado = INICIO;
       }
 
@@ -216,7 +206,7 @@ class Animacion {
       this.actualizarYdibujar();
 
       // El autómata permanece en INICIO
-      // δ(INICIO) -> INICIO
+      // f(INICIO) -> INICIO
       setTimeout(this.ejecutarMaquinaDeEstados.bind(this), 100);
     }
   }
